@@ -12,7 +12,7 @@ const PostList = () => {
   }
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [posts]);
 
   const renderedPosts = Object.values(posts).map((post) => {
     return (
