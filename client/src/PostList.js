@@ -6,13 +6,19 @@ import CommentList from './CommentList';
 const PostList = () => {
   const [posts, setPosts] = useState({});
   const fetchPosts = async () => {
-    const res = await axios.get('http://localhost:4002/posts');
 
-    setPosts(res.data);
+    try {
+      const res = await axios.get('http://localhost:4002/posts');
+
+      setPosts(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+
   }
   useEffect(() => {
     fetchPosts();
-  }, [posts]);
+  }, []);
 
   const renderedPosts = Object.values(posts).map((post) => {
     return (
